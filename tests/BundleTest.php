@@ -14,6 +14,7 @@ final class BundleTest extends TestCase
     private function load(array $cfg): ContainerBuilder
     {
         $c = new ContainerBuilder();
+        $c->setParameter('kernel.environment', 'test'); // a real kernel always defines it; newer http-kernel reads it
         (new WatchtowerBundle())->getContainerExtension()->load([$cfg], $c);
         return $c;
     }
